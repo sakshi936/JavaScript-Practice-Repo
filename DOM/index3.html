@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM-3</title>
+    <style>
+      .bg-black {
+        background-color: #181818;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <ul class="language">
+      <li>JavaScript</li>
+    </ul>
+  </body>
+
+  <!-- script -->
+
+  <script>
+    //----- Edit Remove element in DOM------
+
+    // function add_lang(lang_name) {
+    //   const li = document.createElement("li");
+
+    //   li.innerHTML = ` ${lang_name}`;
+    //   document.querySelector(".language").appendChild(li);
+    // }
+
+    // add_lang("JAVA");
+    // add_lang("Python");
+    // add_lang("CPP");
+
+    // Optimized way ----
+
+    function add_lang(lang) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(`${lang}`));
+
+      document.querySelector(".language").appendChild(li);
+    }
+
+    add_lang("JAVA");
+    add_lang("Python");
+    add_lang("CPP");
+
+    //Edit--
+
+    // changing the inner text of html  ele
+    const lang2 = document.querySelector("li:nth-child(2)");
+    console.log(lang2);
+    lang2.innerHTML = "C#";
+
+    //  creating a new li ele and replace the old li with new li
+    const newli = document.createElement("li");
+    newli.textContent = "PHP";
+    lang2.replaceWith(newli);
+
+    // edit first child
+
+    const lang1 = document.querySelector("li:first-child");
+    lang1.outerHTML = "<li>TypeScript</li>";
+
+    // remmove
+
+    const lstchild = document.querySelector("li:last-child");
+    lstchild.remove();
+  </script>
+</html>

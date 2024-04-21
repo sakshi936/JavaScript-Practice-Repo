@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DOM</title>
+    <style>
+      .bg-black {
+        background-color: #181818;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <div class="parent">
+      <!-- comment -->
+      <div class="day">Monday</div>
+      <div class="day">Teusday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thurseday</div>
+      <div class="day">Friday</div>
+      <div class="day">Satureday</div>
+      <div class="day">Sunday</div>
+    </div>
+  </body>
+
+  <script>
+    const parent = document.querySelector(".parent");
+
+    //------------------ Some  parent properties (Traversal)-------------------
+
+    // Accessing parent to child -->
+
+    console.log(parent); //all child div into parent
+    console.log(parent.children); //html collection
+    console.log(parent.children[1].innerHTML); //value/text of  second child of  parent div
+
+    for (let i = 0; i < parent.children.length; i++) {
+      console.log(parent.children[i].innerHTML); // text inner each child of parent
+    }
+
+    parent.children[1].style.backgroundColor = "red"; // apply style on a parent child[1]
+    parent.children[1].style.color = "black";
+
+    console.log(parent.firstElementChild); // monday
+
+    const day1 = document.querySelector(".day");
+    console.log(day1);
+    console.log(day1.parentElement); // Accessing  child to parent
+    console.log(day1.nextElementSibling);
+
+    console.log(parent.childNodes); //
+  </script>
+</html>
