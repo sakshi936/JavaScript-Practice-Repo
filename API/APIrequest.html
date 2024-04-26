@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Request</title>
+  </head>
+  <body>
+    <div class="profile">
+      <h1>MY Git Profile</h1>
+      <button class="display">Show Profile</button>
+      <div
+        class="card"
+        style="
+          background-color: pink;
+          border-radius: 5px;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <img src="" alt="" width="50%" />
+        <h2 class="name"></h2>
+        <h3 class="bio"></h3>
+        <h4 class="followers"></h4>
+        <h4 class="following"></h4>
+      </div>
+    </div>
+  </body>
+  <script>
+    // Ajex request
+
+    // let name;
+
+    let button;
+    let card;
+    const requestURL = "https://api.github.com/users/sakshi936"; // github/usersAPI
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", requestURL);
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState);
+      if (xhr.readyState === 4) {
+        const data = JSON.parse(this.responseText); // response return in string form   to get all ele/properties of user API we have to convert string->JSON form
+        // name = data.name;
+
+        // console.log(`img - ${img}` / s);
+        // console.log(name);
+
+        document
+          .querySelector(".profile img")
+          .setAttribute("src", data.avatar_url);
+
+        const name = document.querySelector(".name");
+        name.innerText = `${data.name}`;
+
+        const bio = document.querySelector(".bio");
+        bio.innerText = `${data.bio}`;
+
+        document.querySelector(
+          ".followers"
+        ).innerHTML = ` Followers: ${data.followers}`;
+
+        document.querySelector(
+          ".following"
+        ).innerHTML = ` Following: ${data.following}`;
+
+        button = document.querySelector(".display");
+        // button.style.cssText = ` backgroundColor: pink; border: 0px;`;
+        // button.style.border = "0px";
+        button.setAttribute(
+          "style",
+          " background-color: blue; border: 0px; color: white; width: 100px; padding: 9px; border-radius: 5px; font-weight: bold;"
+        );
+      }
+
+      card = document.querySelector(".card");
+      card.style.display = "none";
+      //   console.log(`name ${name}`);
+
+      button.addEventListener("click", () => {
+        button.style.display = "none";
+        card.style.display = "flex";
+      });
+    };
+
+    xhr.send();
+  </script>
+</html>

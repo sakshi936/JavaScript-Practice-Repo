@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SetTime Methods</title>
+  </head>
+  <body>
+    <h1>Java Script Series</h1>
+    <button id="stop">STOP</button>
+
+    <h2>Set TimeIterval <br /></h2>
+    <button id="itstart">start</button>
+    <button id="itstop">stop</button>
+
+    <h1 id="text">Start Timer</h1>
+  </body>
+
+  <script>
+    // setTimeout(() => {
+    //   console.log("TimeOut!");
+    // }, 2000);
+
+    const timeout = () => {
+      console.log("TimeOut again!");
+    };
+
+    // setTimeout(timeout, 2000); //only reference of the function
+
+    const h1 = function () {
+      document.querySelector("h1").innerHTML = "Best JS series on YT";
+    };
+
+    const changeh1 = setTimeout(h1, 2000); // change the h1 content
+
+    // stop the changes in h1 by clearing the timeout fun
+
+    document.getElementById("stop").addEventListener("click", function () {
+      clearTimeout(changeh1);
+      console.log("stopped!");
+    });
+
+    // setInterval -------
+
+    // displaying current time by cotrolling start and stop button
+    const sayTime = function (str) {
+      let date = new Date();
+      document.getElementById(
+        "text"
+      ).innerHTML = `${str} Time is:  ${date.toLocaleTimeString()}`;
+    };
+
+    let setIntervalId;
+
+    const startInterval = () => {
+      if (!setIntervalId) setIntervalId = setInterval(sayTime, 1000, "Current");
+    };
+    const stopInterval = () => {
+      clearInterval(setIntervalId);
+      setIntervalId = null;
+    };
+
+    document.getElementById("itstart").addEventListener("click", startInterval);
+
+    document.getElementById("itstop").addEventListener("click", stopInterval);
+  </script>
+</html>
