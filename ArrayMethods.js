@@ -112,3 +112,24 @@ const shoppingcart =[
 const  total_price = shoppingcart.reduce( (acc, item)=>  acc+item.price ,0)
 
 console.log(total_price);
+
+
+
+// convert binary to decimal and get sum of them 
+const binary =`0110
+0010
+1001
+1100
+1010
+1110
+1111`
+
+const binarr =  binary.split('\n');
+console.log(binarr);
+
+const binstring = binarr.reduce((str,bin)=>{ 
+  let dec= parseInt(bin,2);
+  console.log(dec);
+  return (str+=dec+' ')},'')
+
+console.log(binstring);

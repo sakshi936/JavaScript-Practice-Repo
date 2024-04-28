@@ -84,6 +84,16 @@ const Promise5 = new Promise((resolve,reject)=>{
         }
     })
 })
+// .then((response)=>{
+//     console.log(`1st-response`);
+//     return '2nd-response';
+// })
+// .catch(e=>{console.log("error 1st"+e)
+//         throw 'error 2';
+//         })
+//         .then((result)=>{console.log(result);})
+//         .catch(err=>{console.log(err)})
+//         .finally(()=>console.log("Finally Done!"))
 
 
 async function HandlePromise(){    // it does not provide any option to handle promise rejection ------- 
@@ -98,4 +108,34 @@ async function HandlePromise(){    // it does not provide any option to handle p
 }
 
 HandlePromise();
+
+
+
+// fetch ----
+
+
+
+async function Getallusers(){
+    try{
+        const respose= await fetch(`https://jsonplaceholder.typicode.com/users`);
+    const data = await(respose).json();
+    console.log(data);
+    console.log(respose);
+    }
+    catch(e){
+        console.log("Error:"+e);
+    }
+}
+Getallusers();
+
+
+fetch('https://jsonplaceholder.typicode.com/users')
+.then((response)=>{
+    return response.json();
+}).then((data)=>{
+    console.log(data);
+})
+.catch((e)=>{
+    console.log('eoor:'+e);
+})
 
