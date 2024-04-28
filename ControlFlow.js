@@ -61,7 +61,7 @@ const arr=[];
 // console.log("true");
 
 
-//-------------Nullish Coalescing Operator (??): null udefined ----------------
+//-------------Nullish Coalescing Operator (??): null udefined  ----------------
 
 let val1;
 // val1= 5 ?? 10;
